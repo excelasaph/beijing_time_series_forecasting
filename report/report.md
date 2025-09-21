@@ -157,17 +157,17 @@ Complex models are powerful but dangerous - they can memorize training data fast
 | 2. LSTM | 48 | 50 units, 2 layers | 0.00001 | sigmoid | BatchNorm | Nadam | 5021.2795 | 0.0034 | 0.0038 |
 | 3. GRU | 48 | 50 units, 2 layers (GRU) | 0.00001 | sigmoid | BatchNorm | Nadam | 5347.6998 | 0.0037 | 0.0038 |
 | 4. GRU | 48 | 50 units, 2 layers (GRU) | 0.00001 | sigmoid | BatchNorm, EarlyStopping | Nadam | 5391.0527 | 0.0036 | 0.0038 |
-| 5. BiLSTM | 48 | 50 units, 2 layers (BiLSTM) | 0.00001 | sigmoid | BatchNorm | Nadam | 5220.1772 | ------ | ------ |
-| 6. BiLSTM | 48 | 50 units, 2 layers (BiLSTM) | 0.00001 | sigmoid | BatchNorm, EarlyStopping | Nadam | 5291.3600 | ------ | ------ |
-| 7. BiLSTM | 24 | 25,35,50 units, 3 layers (BiLSTM) | 0.0001 | sigmoid | BatchNorm, EarlyStopping | Nadam | 5505.7964 | ------ | ------ |
-| 8. BiLSTM | 48 | 50 units, 2 layers (BiLSTM) | 0.0001 | sigmoid | BatchNorm, EarlyStopping | Nadam | 5043.8079 | ------ | ------ |
-| 9. BiLSTM + Attention | 24 | 64,32,16+MHA units, 4 layers (BiLSTM+Attention) | 0.0001 | sigmoid | BatchNorm, EarlyStopping, Dropout(0.2) | Nadam | 4081.6186 | ------ | ------ |
-| 10. GRU | 24 | 25 units, 2 layers (GRU) | 0.00001 | sigmoid | BatchNorm, EarlyStopping | Nadam | 5275.6070 | ------ | ------ |
-| 11. GRU | 12 | 50 units, 2 layers (GRU) | 0.0001 | sigmoid | BatchNorm | Nadam | 5907.6508 | ------ | ------ |
-| 12. BiLSTM | 12 | 50 units, 2 layers (GRU) | 0.00001 | sigmoid | BatchNorm, EarlyStopping | Nadam | 5781.5603 | ------ | ------ |
-| 13. BiLSTM | 24 | 25 units, 2 layers (GRU) | 0.0001 | sigmoid | BatchNorm, EarlyStopping | Nadam | 5653.5757 | ------ | ------ |
-| 14. GRU | 48 | 50 units, 2 layers (GRU) | 0.0001 | sigmoid | BatchNorm | Nadam | 6176.8134 | ------ | ------ |
-| 15. GRU | 48 | 25, 50 units, 2 layers (GRU) | 0.00001 | sigmoid | BatchNorm, EarlyStopping | Nadam | 6188.2314 | ------ | ------ |
+| 5. BiLSTM | 48 | 50 units, 2 layers (BiLSTM) | 0.00001 | sigmoid | BatchNorm | Nadam | 5220.1772 | 0.0041 | 0.0045 |
+| 6. BiLSTM | 48 | 50 units, 2 layers (BiLSTM) | 0.00001 | sigmoid | BatchNorm, EarlyStopping | Nadam | 5291.3600 | 0.0044  | 0.0031  |
+| 7. BiLSTM | 24 | 25,35,50 units, 3 layers (BiLSTM) | 0.0001 | sigmoid | BatchNorm, EarlyStopping | Nadam | 5505.7964 | 0.0034  | 0.0041  |
+| 8. BiLSTM | 48 | 50 units, 2 layers (BiLSTM) | 0.0001 | sigmoid | BatchNorm, EarlyStopping | Nadam | 5043.8079 | 0.0037  | 0.0037  |
+| 9. BiLSTM + Attention | 24 | 64,32,16+MHA units, 4 layers (BiLSTM+Attention) | 0.0001 | sigmoid | BatchNorm, EarlyStopping, Dropout(0.2) | Nadam | 4081.6186 | 0.0029 | 0.0032 |
+| 10. GRU | 24 | 25 units, 2 layers (GRU) | 0.00001 | sigmoid | BatchNorm, EarlyStopping | Nadam | 5275.6070 | 0.0033 | 0.0039 |
+| 11. GRU | 12 | 50 units, 2 layers (GRU) | 0.0001 | sigmoid | BatchNorm | Nadam | 5907.6508 | 0.0054 | 0.0055 |
+| 12. BiLSTM | 12 | 50 units, 2 layers (GRU) | 0.00001 | sigmoid | BatchNorm, EarlyStopping | Nadam | 5781.5603 | 0.0059 | 0.0089 |
+| 13. BiLSTM | 24 | 25 units, 2 layers (GRU) | 0.0001 | sigmoid | BatchNorm, EarlyStopping | Nadam | 5653.5757 | 0.0132 | 0.0157 |
+| 14. GRU | 48 | 50 units, 2 layers (GRU) | 0.0001 | sigmoid | BatchNorm | Nadam | 6176.8134 | 0.0232 | 0.0132 |
+| 15. GRU | 48 | 25, 50 units, 2 layers (GRU) | 0.00001 | sigmoid | BatchNorm, EarlyStopping | Nadam | 6188.2314 | 0.0109 | 0.0100 |
 
 ## Results and Key Findings
 
