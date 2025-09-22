@@ -1,8 +1,8 @@
 # Beijing Time Series Air Quality Forecasting
 
-**Project**: Beijing Air Quality - Time Series Forecasting 
+**Project**: Beijing Air Quality - Time Series Forecasting  
 **Course**: Machine Learning Techniques  
-**Name**: Excel Asaph
+**Name**: Excel Asaph   
 **GitHub Repository**: [https://github.com/excelasaph/beijing_time_series_forecasting](https://github.com/excelasaph/beijing_time_series_forecasting)  
 **Dataset Source**: [Time Series Forecasting Septemb 2025](https://www.kaggle.com/competitions/assignment-1-time-series-forecasting-septemb-2025)
 
@@ -157,11 +157,11 @@ Complex models are powerful but dangerous - they can memorize training data fast
 | 2. LSTM | 48 | 50 units, 2 layers | 0.00001 | sigmoid | BatchNorm | Nadam | 5021.2795 | 0.0034 | 0.0038 |
 | 3. GRU | 48 | 50 units, 2 layers (GRU) | 0.00001 | sigmoid | BatchNorm | Nadam | 5347.6998 | 0.0037 | 0.0038 |
 | 4. GRU | 48 | 50 units, 2 layers (GRU) | 0.00001 | sigmoid | BatchNorm, EarlyStopping | Nadam | 5391.0527 | 0.0036 | 0.0038 |
-| 5. BiLSTM | 48 | 50 units, 2 layers (BiLSTM) | 0.00001 | sigmoid | BatchNorm | Nadam | 5220.1772 | 0.0041 | 0.0045 |
-| 6. BiLSTM | 48 | 50 units, 2 layers (BiLSTM) | 0.00001 | sigmoid | BatchNorm, EarlyStopping | Nadam | 5291.3600 | 0.0044  | 0.0031  |
-| 7. BiLSTM | 24 | 25,35,50 units, 3 layers (BiLSTM) | 0.0001 | sigmoid | BatchNorm, EarlyStopping | Nadam | 5505.7964 | 0.0034  | 0.0041  |
-| 8. BiLSTM | 48 | 50 units, 2 layers (BiLSTM) | 0.0001 | sigmoid | BatchNorm, EarlyStopping | Nadam | 5043.8079 | 0.0037  | 0.0037  |
-| 9. BiLSTM + Attention | 24 | 64,32,16+MHA units, 4 layers (BiLSTM+Attention) | 0.0001 | sigmoid | BatchNorm, EarlyStopping, Dropout(0.2) | Nadam | 4081.6186 | 0.0029 | 0.0032 |
+| 5. BiLSTM | 48 | 50 units, 2 layers (BiLSTM) | 0.00001 | sigmoid | BatchNorm | Nadam | 5220.1772 | 0.0034 | 0.0039 |
+| 6. BiLSTM | 48 | 50 units, 2 layers (BiLSTM) | 0.00001 | sigmoid | BatchNorm, EarlyStopping | Nadam | 5291.3600 | 0.0033  | 0.0039  |
+| 7. BiLSTM | 24 | 25,35,50 units, 3 layers (BiLSTM) | 0.0001 | sigmoid | BatchNorm, EarlyStopping | Nadam | 5505.7964 | 0.0033  | 0.0038  |
+| 8. BiLSTM | 48 | 50 units, 2 layers (BiLSTM) | 0.0001 | sigmoid | BatchNorm, EarlyStopping | Nadam | 5043.8079 | 0.0034  | 0.0038  |
+| 9. BiLSTM + Attention | 24 | 64,32,16+MHA units, 4 layers (BiLSTM+Attention) | 0.0001 | sigmoid | BatchNorm, EarlyStopping, Dropout(0.2) | Nadam | 4081.6186 | 0.0043 | 0.0045 |
 | 10. GRU | 24 | 25 units, 2 layers (GRU) | 0.00001 | sigmoid | BatchNorm, EarlyStopping | Nadam | 5275.6070 | 0.0033 | 0.0039 |
 | 11. GRU | 12 | 50 units, 2 layers (GRU) | 0.0001 | sigmoid | BatchNorm | Nadam | 5907.6508 | 0.0054 | 0.0055 |
 | 12. BiLSTM | 12 | 50 units, 2 layers (GRU) | 0.00001 | sigmoid | BatchNorm, EarlyStopping | Nadam | 5781.5603 | 0.0059 | 0.0089 |
@@ -177,43 +177,6 @@ Complex models are powerful but dangerous - they can memorize training data fast
 - **Overall Improvement**: 2101-point reduction from Model 1 (6183.0989) to Model 9 (4081.6186) - a **34% improvement**
 - **Attention Breakthrough**: Model 9 achieved nearly 1000-point improvement over the best traditional model (Model 2: 5021.2795)
 - **Target Achievement**: Successfully achieved Kaggle target of RMSE below 4000
-
-### Why I Chose This Architecture
-
-#### Starting Simple: The LSTM Foundation
-
-I began with basic LSTM models (Models 1-2) to see what we were working with. The results were eye-opening - Model 1 with just 12-hour sequences gave an RMSE of 6183, which was pretty rough. But when I increased it up to 48 hours (Model 2), the RMSE dropped to 5021 - nearly an 18% improvement! This told me that **PM2.5 patterns need longer memory than I initially thought**.
-
-It makes sense when I thought about it - air pollution doesn't just depend on what happened in the last few hours. Daily traffic patterns, weather systems that last for days, even weekly cycles all matter.
-
-#### The Bidirectional Discovery
-
-Moving from regular LSTM to bidirectional LSTM (Model 5) was another "aha" moment. The improvement wasn't massive, but it was consistent. This showed me that **future context helps predict current pollution levels**. 
-
-#### The Attention Breakthrough
-
-The biggest leap came with Model 9 and attention mechanisms. Going from 5021 RMSE (best traditional model) to 4081 RMSE was huge - nearly a 19% jump! This was my biggest learning.
-
-
-#### Finding the Sweet Spot: 24 vs 48 Hours
-
-While traditional models loved 48-hour sequences, the attention model worked better with 24 hours.
-
-#### The Hierarchical Design Choice
-
-The decreasing layer sizes (64→32→16) weren't random - I borrowed this idea from computer vision. Each layer learns different levels of detail:
-- **64 units**: Broad patterns like daily cycles and weather trends  
-- **32 units**: Medium-term relationships like how yesterday affects today
-- **16 units**: Fine details for hour-to-hour predictions
-
-It's like having different people look at the same data with different levels of zoom.
-
-#### Regularization Reality Check
-
-Complex models are powerful but dangerous - they can memorize training data fast. That's why I added:
-- **Dropout (0.2)**: Randomly "forgets" some connections during training
-- **Early Stopping**: Stops training before the model gets too comfortable with training data
-- **BatchNormalization**: Keeps the internal math stable
 
 ### Key Insights
 
